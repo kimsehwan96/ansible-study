@@ -1,0 +1,11 @@
+all:
+  vars:
+    ansible_user: kim
+    ansible_become_password: leejung1?
+  hosts:
+    node0:
+      ansible_host: 192.168.0.2
+  children:
+    master:
+      hosts:
+        node0:

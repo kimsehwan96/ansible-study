@@ -1,0 +1,22 @@
+- hosts: master 
+  vars:
+    arch: arm64
+    version: v1.24.1
+  become: true
+  tasks:
+    - name: apt install net-tools
+      apt:
+        name: net-tools
+        state: latest
+        update_cache: yes
+    
+    - name : Install kubeadm kubelet kubectl bin
+      get_url:
+        url: https://storage.googleapis.com/kubernetes-release/release/{{ version }}/bin/linux/{{ arch }}/{{ item }}
+        dest: /usr/bin/{{ item }}
+        mode: 0755
+        force: true
+      with_items:
+        - kubeadm
+        - kubelet
+        - kubectl
