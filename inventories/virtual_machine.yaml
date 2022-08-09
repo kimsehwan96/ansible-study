@@ -1,7 +1,7 @@
 all:
   vars:
     ansible_user: kim
-    ansible_become_password: leejung1?
+    ansible_become_password: ingkle!
   hosts:
     node0:
       ansible_host: 192.168.0.2
